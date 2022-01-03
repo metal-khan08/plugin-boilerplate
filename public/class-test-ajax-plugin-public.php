@@ -97,7 +97,9 @@ class Test_Ajax_Plugin_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/test-ajax-plugin-public.js', array( 'jquery' ), $this->version, false );
-
+		//added dependency for the admin ajax //url:my_ajax_object.ajax_url,//
+		wp_localize_script( $this->plugin_name, 'my_ajax_object',
+        array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 	}
 
 }
